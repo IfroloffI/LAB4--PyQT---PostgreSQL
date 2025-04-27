@@ -2,10 +2,17 @@
 
 ## Add in .env:
 ```yml
-APP_NAME=MyQtApp
+# Application Configuration
+APP_NAME=QtApp
 APP_VERSION=1.0.0
-UI_FILE=design.ui
-DB_ENDPOINT=
+UI_FILE=main_window.ui
+
+# Database Configuration
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=lab4_db
+DB_USER=postgres
+DB_PASSWORD=secret
 ```
 
 ## Initial Setup and RUN

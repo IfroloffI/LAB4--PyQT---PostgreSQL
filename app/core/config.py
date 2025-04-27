@@ -14,7 +14,13 @@ class AppConfig:
     APP_VERSION = get("APP_VERSION", "1.0.0")
     UI_FILE = get("UI_FILE", "main_window.ui")
 
+    DB_HOST = get("DB_HOST", "localhost")
+    DB_PORT = get("DB_HOST", "5432")
+    DB_NAME = get("DB_NAME", "lab4_db")
+    DB_USER = get("DB_USER", "postgres")
+    DB_PASSWORD = get("DB_PASSWORD")
+
     @classmethod
     def validate(cls):
-        if not all([cls.APP_NAME, cls.APP_VERSION, cls.UI_FILE]):
+        if not all([cls.APP_NAME, cls.APP_VERSION, cls.UI_FILE, cls.DB_PASSWORD]):
             raise EnvironmentError("Missing required environment variables")

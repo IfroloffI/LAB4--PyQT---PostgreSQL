@@ -20,7 +20,7 @@ class DatabaseConnection:
     def _connect(self):
         conn_params = {
             "host": AppConfig.get("DB_HOST"),
-            "port": "5480", # AppConfig.get("DB_PORT"), TODO: FIX THIS
+            "port": AppConfig.get("DB_PORT"),
             "dbname": AppConfig.get("DB_NAME"),
             "user": AppConfig.get("DB_USER"),
             "password": AppConfig.get("DB_PASSWORD"),

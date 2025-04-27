@@ -11,7 +11,10 @@ def main():
         AppConfig.validate()
 
         app = QApplication(sys.argv)
-        window = MainWindow(MainController())
+
+        controller = MainController()
+        window = MainWindow(controller)
+
         window.show()
         sys.exit(app.exec())
     except Exception as e:

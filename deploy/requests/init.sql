@@ -1,7 +1,65 @@
-CREATE TABLE records (
+-- Создание таблицы клиентов
+CREATE TABLE clients (
     id SERIAL PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    description TEXT,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    passport_number VARCHAR(20) UNIQUE NOT NULL,
+    phone_number VARCHAR(20),
+    email VARCHAR(100),
     created_at TIMESTAMP DEFAULT NOW(),
     updated_at TIMESTAMP DEFAULT NOW()
 );
+
+-- Создание таблицы счетов
+CREATE TABLE accounts (
+    id SERIAL PRIMARY KEY,
+    client_id INTEGER NOT NULL REFERENCES clients(id) ON DELETE CASCADE,
+    account_number VARCHAR(20) UNIQUE NOT NULL,
+    account_type VARCHAR(50) NOT NULL, -- 'checking', 'savings', 'credit'
+    balance DECIMAL(15, 2) NOT NULL DEFAULT 0.00,
+    currency VARCHAR(3) NOT NULL DEFAULT 'RUB',
+    opened_date DATE NOT NULL DEFAULT CURRENT_DATE,
+    is_active BOOLEAN NOT NULL DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Создание таблицы транзакций
+CREATE TABLE transactions (
+    id SERIAL PRIMARY KEY,
+    from_account_id INTEGER REFERENCES accounts(id),
+    to_account_id INTEGER NOT NULL REFERENCES accounts(id),
+    amount DECIMAL(15, 2) NOT NULL,
+    transaction_type VARCHAR(50) NOT NULL, -- 'transfer', 'deposit', 'withdrawal'
+    description TEXT,
+    transaction_date TIMESTAMP NOT NULL DEFAULT NOW(),
+    status VARCHAR(20) NOT NULL DEFAULT 'completed', -- 'pending', 'completed', 'failed'
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Индексы для улучшения производительности
+CREATE INDEX idx_accounts_client_id ON accounts(client_id);
+CREATE INDEX idx_transactions_from_account ON transactions(from_account_id);
+CREATE INDEX idx_transactions_to_account ON transactions(to_account_id);
+CREATE INDEX idx_transactions_date ON transactions(transaction_date);
+
+-- Начальные данные для тестирования
+INSERT INTO clients (first_name, last_name, passport_number, phone_number, email)
+VALUES 
+    ('Иван', 'Иванов', '1234567890', '+79161234567', 'ivan@example.com'),
+    ('Петр', 'Петров', '0987654321', '+79169876543', 'petr@example.com'),
+    ('Сергей', 'Сергеев', '1122334455', '+79161122334', 'sergey@example.com');
+
+INSERT INTO accounts (client_id, account_number, account_type, balance, currency)
+VALUES 
+    (1, '40817810000000000001', 'checking', 150000.00, 'RUB'),
+    (1, '40817810000000000002', 'savings', 500000.00, 'RUB'),
+    (2, '40817810000000000003', 'checking', 75000.50, 'RUB'),
+    (3, '40817810000000000004', 'credit', -30000.00, 'RUB');
+
+INSERT INTO transactions (from_account_id, to_account_id, amount, transaction_type, description)
+VALUES 
+    (NULL, 1, 200000.00, 'deposit', 'Первоначальный взнос'),
+    (1, 2, 50000.00, 'transfer', 'Перевод на сберегательный счет'),
+    (1, 3, 10000.00, 'transfer', 'Оплата услуг'),
+    (3, 4, 5000.00, 'transfer', 'Кредитный платеж');
