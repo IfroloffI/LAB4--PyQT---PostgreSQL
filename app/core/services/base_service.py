@@ -7,7 +7,6 @@ class BaseService:
         self.db = DatabaseConnection()
 
     def _exists(self, table: str, id: int) -> bool:
-        """Общий метод для проверки существования записи по ID"""
         try:
             with self.db.get_cursor() as cursor:
                 cursor.execute(f"SELECT 1 FROM {table} WHERE id = %s", (id,))
