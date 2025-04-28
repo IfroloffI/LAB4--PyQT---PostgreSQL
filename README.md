@@ -1,10 +1,11 @@
 # Qt6 Python App Setup
 
 ## Add in .env:
+
 ```yml
 # Application Configuration
 APP_NAME=QtApp
-APP_VERSION=0.0.1
+APP_VERSION=0.0.7stable
 UI_FILE=main_window.ui
 
 # Database Configuration
@@ -16,7 +17,9 @@ DB_PASSWORD=secret
 ```
 
 ## Initial Setup and RUN
+
 RUN docker-compose.yml
+
 ```bash
 python -m venv venv           # Create virtual environment
 venv\Scripts\activate         # Activate on Windows
@@ -29,13 +32,17 @@ python -m app.main
 ```
 
 # For Developers (FOR EDIT PROJECT)
+
 ## Download QT Designer on Folder 'designer': https://build-system.fman.io/qt-designer-download
 
 ## Run 'designer/designer.exe'
 
 ## Save UI files in 'design/ui' folder, update .env
 
+## Or edit file **design/ui/main_window.ui**
+
 ## For transform UI to PY and RUN:
+
 ```bash
 python -m app.core.utils.convert_ui
 python -m app.main
