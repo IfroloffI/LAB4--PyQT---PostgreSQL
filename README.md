@@ -18,7 +18,7 @@ DB_PASSWORD=secret
 
 ## Initial Setup and RUN
 
-Dependencies: **Git**, **Docker**, **Python\*\*\***(3.11+)\*\*\*, Qt Designer (optional)
+Dependencies: **Git**, **Docker**, **Python** ***(3.11+)***, Qt Designer (optional)
 
 ```bash
 cd deploy
