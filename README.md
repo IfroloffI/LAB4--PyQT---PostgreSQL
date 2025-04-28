@@ -18,28 +18,30 @@ DB_PASSWORD=secret
 
 ## Initial Setup and RUN
 
-RUN docker-compose.yml
+Dependencies: **Git**, **Docker**, **Python\*\*\***(3.11+)\*\*\*, Qt Designer (optional)
 
 ```bash
+docker compose up -d --build  # Create storages
 python -m venv venv           # Create virtual environment
 venv\Scripts\activate         # Activate on Windows
 source venv/bin/activate      # Activate on Linux/Mac
 
 python -m pip install --upgrade pip
-pip install PyQt6 python-dotenv psycopg2-binary # OR requirements.txt TODO: Add requirements
+pip install -r requirements.txt # Or pip install PyQt6 python-dotenv psycopg2-binary
 python -m app.core.utils.convert_ui
 python -m app.main
 ```
 
 # For Developers (FOR EDIT PROJECT)
 
-## Download QT Designer on Folder 'designer': 
+## Download QT Designer on Folder 'designer':
 
 ### https://build-system.fman.io/qt-designer-download
 
 ## Run 'designer/designer.exe'
 
 ### Save UI files in 'design/ui' folder, update .env
+
 ### Or edit file **design/ui/main_window.ui**
 
 ## For transform UI to PY and RUN:

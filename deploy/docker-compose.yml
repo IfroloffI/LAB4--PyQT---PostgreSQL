@@ -17,15 +17,15 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-  local_storage_level_db:
-    image: leveldb/leveldb:latest
-    volumes:
-      - leveldb_data:/data
-    ports:
-      - "8080:8080"
-    environment:
-      - LEVELDB_PATH=/data
+#  app_local_storage_level_db:
+#    image: leveldb/leveldb:latest
+#    volumes:
+#      - leveldb_data:/data
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      - LEVELDB_PATH=/data
 
 volumes:
   lab4_postgres_data:
-  leveldb_data:
+#  leveldb_data:
