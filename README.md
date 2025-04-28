@@ -33,13 +33,14 @@ python -m app.main
 
 # For Developers (FOR EDIT PROJECT)
 
-## Download QT Designer on Folder 'designer': https://build-system.fman.io/qt-designer-download
+## Download QT Designer on Folder 'designer': 
+
+### https://build-system.fman.io/qt-designer-download
 
 ## Run 'designer/designer.exe'
 
-## Save UI files in 'design/ui' folder, update .env
-
-## Or edit file **design/ui/main_window.ui**
+### Save UI files in 'design/ui' folder, update .env
+### Or edit file **design/ui/main_window.ui**
 
 ## For transform UI to PY and RUN:
 
