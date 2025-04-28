@@ -3,7 +3,6 @@ import sys
 from PyQt6.QtWidgets import QApplication
 from app.core.config import AppConfig
 from app.ui.views.main_window import MainWindow
-from app.ui.controllers.main_controller import MainController
 
 
 def main():
@@ -11,10 +10,7 @@ def main():
         AppConfig.validate()
 
         app = QApplication(sys.argv)
-
-        controller = MainController()
-        window = MainWindow(controller)
-
+        window = MainWindow()
         window.show()
         sys.exit(app.exec())
     except Exception as e:

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Банковское приложение</string>
+   <string>LAB 4</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -159,7 +159,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="transactionsTab">
+      <widget class="QGroupBox" name="transactionsGroup">
        <attribute name="title">
         <string>Транзакции</string>
        </attribute>
@@ -236,7 +236,7 @@
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>Файл</string>
+     <string>App</string>
     </property>
     <addaction name="actionExit"/>
    </widget>
