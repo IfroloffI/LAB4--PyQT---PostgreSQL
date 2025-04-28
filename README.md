@@ -21,7 +21,9 @@ DB_PASSWORD=secret
 Dependencies: **Git**, **Docker**, **Python\*\*\***(3.11+)\*\*\*, Qt Designer (optional)
 
 ```bash
+cd deploy
 docker compose up -d --build  # Create storages
+cd ..
 python -m venv venv           # Create virtual environment
 venv\Scripts\activate         # Activate on Windows
 source venv/bin/activate      # Activate on Linux/Mac
